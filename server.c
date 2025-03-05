@@ -9,7 +9,7 @@
 #include<errno.h>
 #include<pthread.h>
 
-const sport = 9527;
+const int sport = 9527;
 struct sockaddr_in saddr, caddr;
 
 void sys_error(char *s) {
@@ -33,7 +33,7 @@ int main() {
 
     //阻塞等待
     socklen_t caddr_len = sizeof(caddr);
-    int cfd = accept(lfd, (struct sockaddr*)&saddr, &caddr_len); //阻塞直至有客户端连接
+    int cfd = accept(lfd, (struct sockaddr*)&caddr, &caddr_len); //阻塞直至有客户端连接
     if (cfd == -1)  sys_error("accept error");
 
     while (1) {

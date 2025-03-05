@@ -10,7 +10,7 @@
 #include<pthread.h>
 
 struct sockaddr_in addr;
-const sport = 9527;
+const int sport = 9527;
 
 void sys_error(char *s) {
     perror(s);
@@ -23,7 +23,7 @@ int main() {
     //socket地址初始化 
     addr.sin_family = AF_INET;
     addr.sin_port = htons(sport);
-    inet_pton(AF_INET,"127.0.0.1",&addr.sin_addr.s_addr);
+    inet_pton(AF_INET,"127.0.0.1",&addr.sin_addr);
 
     //创建socket
     int cfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -37,9 +37,9 @@ int main() {
         sys_error("connect error");
     }
 
-    int cnt = 11; //通信次数
+    int cnt = 8; //通信次数
     while (cnt--) {
-        write(cfd, "ciallo~tt", 6);
+        write(cfd, "ciallott\n", 6);
         sign = read(cfd, buf, sizeof(buf));
         write(STDOUT_FILENO, buf, sign);
         sleep(1);
