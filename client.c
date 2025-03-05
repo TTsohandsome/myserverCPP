@@ -39,7 +39,7 @@ int main() {
 
     int cnt = 8; //通信次数
     while (cnt--) {
-        write(cfd, "ciallott\n", 6);
+        write(cfd, "ciallott\n", 10);
         sign = read(cfd, buf, sizeof(buf));
         write(STDOUT_FILENO, buf, sign);
         sleep(1);
